@@ -1,0 +1,12 @@
+apiVersion: skaffold/v1beta6
+kind: Config
+build:
+  artifacts:
+    - image: bohushvitali/test-bazel-go
+      context: ./services/test-bazel-go/
+      bazel:
+        target: //services/test-bazel-go:test_bazel_go.tar
+deploy:
+  kubectl:
+    manifests:
+      - ./services/test-bazel-go/k8s/**
