@@ -39,4 +39,6 @@ testem.log
 Thumbs.db
 
 # Bazel
+/bazel.iml
 /bazel-*
+/output/
