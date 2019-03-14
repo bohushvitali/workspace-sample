@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-app-vote
+spec:
+  type: NodePort
+  ports:
+    - name: 'voting-app-vote-service'
+      port: 5000
+      targetPort: 80
+      nodePort: 31000
+  selector:
+    app: voting-app-vote
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-app-vote-external
+spec:
+  type: LoadBalancer
+  ports:
+    - name: 'voting-app-vote-service'
+      port: 8000
+      targetPort: 80
+  selector:
+    app: voting-app-vote

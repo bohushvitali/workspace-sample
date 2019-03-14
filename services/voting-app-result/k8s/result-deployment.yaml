@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: voting-app-result
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: voting-app-result
+    spec:
+      containers:
+        - image: gcr.io/sandbox-228621/voting-app-result
+          name: voting-app-result

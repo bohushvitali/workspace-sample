@@ -2,11 +2,38 @@ apiVersion: skaffold/v1beta6
 kind: Config
 build:
   artifacts:
-    - image: bohushvitali/test-bazel-go
-      context: ./services/test-bazel-go/
-      bazel:
-        target: //services/test-bazel-go:test_bazel_go.tar
+    # - image: gcr.io/sandbox-228621/test-bazel-go
+    #   context: ./services/test-bazel-go/
+    #   bazel:
+    #     target: //services/test-bazel-go:test_bazel_go.tar
+    # - image: gcr.io/sandbox-228621/leeroy-web
+    #   context: ./services/leeroy-web/
+    # - image: gcr.io/sandbox-228621/leeroy-app
+    #   context: ./services/leeroy-app/
+    # - image: gcr.io/sandbox-228621/voting-app-vote
+    #   context: ./services/voting-app-vote/
+    # - image: gcr.io/sandbox-228621/voting-app-worker
+    #   context: ./services/voting-app-worker/
+    # - image: gcr.io/sandbox-228621/voting-app-result
+    #   context: ./services/voting-app-result/
+    - image: gcr.io/sandbox-228621/ui-reactapp
+      context: .
+      docker:
+        dockerfile: ./services/ui-reactapp/Dockerfile
+    - image: gcr.io/sandbox-228621/ui-angularapp
+      context: .
+      docker:
+        dockerfile: ./services/ui-angularapp/Dockerfile
+
 deploy:
   kubectl:
     manifests:
-      - ./services/test-bazel-go/k8s/**
+      # - ./services/test-*/k8s/**
+      # - ./services/leeroy-*/k8s/**
+      # - ./services/voting-*/k8s/**
+      - ./services/ui-*/k8s/**
+# profiles:
+#   - name: gcb
+#     build:
+#       googleCloudBuild:
+#         projectId: sandbox-228621

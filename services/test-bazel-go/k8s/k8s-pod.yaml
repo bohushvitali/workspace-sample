@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
     - name: test-bazel-go
-      image: bohushvitali/test-bazel-go
+      image: gcr.io/sandbox-228621/test-bazel-go
